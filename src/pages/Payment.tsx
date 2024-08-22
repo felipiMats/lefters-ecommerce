@@ -1,16 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { formatCurrencyBRL } from "../utils/formatCurrencyBrl";
 import { RootState } from '../redux/store';
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { ProductDTO } from "../dtos/ProductDTO";
-import { REMOVE } from "../redux/actions/action";
+import { DELETE, REMOVE } from "../redux/actions/action";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+
 
 const Payment = () => {
   const getData = useSelector((state: RootState) => state.cartReducer.carts);
   const dispatch = useDispatch();
-  const remove = (product: ProductDTO) => {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const removeCartItem = (product: ProductDTO) => {
     dispatch(REMOVE(product));
+  };
+
+  const handleClose = () => {
+    setShow(false);
+    navigate('/');
+    dispatch(DELETE());
   };
 
   const PaymentForm = () => {
@@ -21,10 +33,9 @@ const Payment = () => {
     } = useForm();
   
     const onSubmit = (data: any) => {
-      console.log(data);
-      // navigate('/');
+      setShow(true);
     };
-  
+
     const currentYear = new Date().getFullYear();
     const years = Array.from({ length: 10 }, (_, i) => currentYear + i);
   
@@ -154,7 +165,7 @@ const Payment = () => {
 
                       <button
                         className="btn p-0"
-                        onClick={() => remove(item)}
+                        onClick={() => removeCartItem(item)}
                         style={{ color: 'red', border: 'none', background: 'none' }}
                       >
                         <i className="fa fa-trash fs-6" aria-hidden="true"></i>
@@ -179,6 +190,17 @@ const Payment = () => {
           </div>
         </div>
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Obrigado pela sua compra!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Seu pedido foi realizado com sucesso.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -30,6 +30,10 @@ export const cartReducer = (state = INIT_STATE, action: CartAction): CartState =
         ...state,
         carts: data
       };
+    case "DELETE_CART":
+      return {
+        carts: []
+      }
     default:
       return state;
   }

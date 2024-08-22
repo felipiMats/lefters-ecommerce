@@ -7,7 +7,7 @@ const HomeCarousel: React.FC = () => {
       <Carousel.Item style={{height: 500}}>
         <img
           className="d-block w-100"
-          src="https://via.placeholder.com/1600x600?text=First+Slide"
+          src="/banner1.png"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -19,7 +19,7 @@ const HomeCarousel: React.FC = () => {
       <Carousel.Item style={{height: 500}}>
         <img
           className="d-block w-100"
-          src="https://via.placeholder.com/1600x600?text=Second+Slide"
+          src="/banner2.png"
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -31,7 +31,7 @@ const HomeCarousel: React.FC = () => {
       <Carousel.Item style={{height: 500}}>
         <img
           className="d-block w-100"
-          src="https://via.placeholder.com/1600x600?text=Third+Slide"
+          src="/banner3.png"
           alt="Third slide"
         />
         <Carousel.Caption>

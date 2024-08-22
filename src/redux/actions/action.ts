@@ -14,3 +14,10 @@ export const REMOVE = (product: ProductDTO) => {
     payload: product,
   };
 };
+
+// Remove cart
+export const DELETE = () => {
+  return {
+    type: "DELETE_CART",
+  };
+};

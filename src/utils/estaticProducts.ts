@@ -1,7 +1,7 @@
 export const PRODUCTS = [
   {
     
-    "id": 1,
+    "id": "1",
     "title": "Men’s winter jacket 0",
     "price": "99",
     "description": "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
@@ -49,7 +49,7 @@ export const PRODUCTS = [
     ]     
   },
   {
-    "id": 2,
+    "id": "2",
     "title": "Men’s winter jacket 1",
     "price": "99",
     "description": "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
@@ -97,7 +97,7 @@ export const PRODUCTS = [
     ]     
   },
   {
-    "id": 3,
+    "id": "3",
     "title": "Men’s winter jacket 2",
     "price": "99",
     "description": "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
@@ -145,7 +145,7 @@ export const PRODUCTS = [
     ]     
   },
   {
-    "id": 4,
+    "id": "4",
     "title": "Men’s winter jacket 3",
     "price": "99",
     "description": "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",

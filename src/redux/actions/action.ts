@@ -1,5 +1,6 @@
+import { ProductDTO } from "../../dtos/ProductDTO";
+
 export const ADD = (item: any) => {
-  console.log("adicionou");
   return {
     type: "ADD_TO_CART",
     payload: item,
@@ -7,9 +8,9 @@ export const ADD = (item: any) => {
 };
 
 // Remove item
-export const REMOVE = (id: number) => {
+export const REMOVE = (product: ProductDTO) => {
   return {
     type: "REMOVE_TO_CART",
-    payload: id,
+    payload: product,
   };
 };

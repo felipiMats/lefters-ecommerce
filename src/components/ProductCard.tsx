@@ -9,13 +9,13 @@ const ProductCard: React.FC<{ product: ProductDTO }> = ({ product }) => {
 
   return (
     <Card key={product.id} className="border border-dark">
-      <Card.Img variant="top" style={{ height: '250' }} src={thumbnailMedia?.url} />
+      <Card.Img variant="top" style={{maxHeight: 400, objectFit: 'cover'}} src={thumbnailMedia?.url} />
       <Card.Body>
         <Card.Title>{product.title.substring(0, 12)}</Card.Title>
         <Card.Text className='fw-bold'>
           {formatCurrencyBRL(product.price)}
         </Card.Text>
-        <Link to={`/products/${product.id}`}> <Button variant="dark">Comprar</Button></Link>
+        <Link to={`/product/${product.id}`}> <Button variant="dark">Comprar</Button></Link>
       </Card.Body>
     </Card>
   );

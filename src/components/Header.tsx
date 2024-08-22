@@ -4,47 +4,64 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { REMOVE } from '../redux/actions/action';
 import { RootState } from '../redux/store';
+import { formatCurrencyBRL } from '../utils/formatCurrencyBrl';
+import { ProductDTO } from '../dtos/ProductDTO';
 
 export const Header = () => {
   const getData = useSelector((state: RootState) => state.cartReducer.carts);
   const dispatch = useDispatch();
 
-  const remove = (id: number) => {
-    dispatch(REMOVE(id));
+  const remove = (product: ProductDTO) => {
+    dispatch(REMOVE(product));
   };
+
   const popover = (
     <Popover id="popover-basic">
-      <table>
-          <thead>
-            <tr>
-              <th className='me-5 text-center'>Image</th>
-              <th className='me-5 text-center'>Item</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              getData.map((item, index) => {
-                return <>
-                    
-                  {/* <tr className='ms-2'>
-                    <td >
-                      <img src={item.medias[0].url} style={{ width: "5rem", height: "5rem" ,margin:"15px 15px"}} alt="" />
-                    </td>
-                    <td>
-                      <div className='text-center mt-3 me-3'>
-                        <p className='text-center mb-0 fw-bolder'>{item.category}</p>
-                        <p className='mb-0'>Price: $ {item.price}</p>
-                        <p className='mb-0'>{item.title.substring(0, 45)}</p>
-                        <p className='mt-1' onClick={()=>remove(item.id)}> <i className="fa fa-trash fs-4 delete-icon" aria-hidden="true"></i></p>
-                      </div>
-                    </td>
-                  </tr> */}
-                      
-                </>
-              })
-            }
-          </tbody>
-      </table>
+      <Popover.Body  >
+        {getData.map((item, index) => {
+          const thumbnailMedia = item?.medias.find((media) => media.thumbnail === true);
+
+          return (
+            <div key={item.id} className="d-flex align-items-start mb-3">
+              <img
+                src={thumbnailMedia?.url}
+                style={{ width: "5rem", height: "5rem", marginRight: "15px" }}
+                alt={item.title}
+              />
+              <div className="d-flex flex-column flex-grow-1">
+                <div className="d-flex justify-content-between mb-1">
+                  <span className='fw-bold'>{item.title.substring(0, 45)}</span>
+                  <span className='text-end'>{formatCurrencyBRL(item.price)}</span>
+                </div>
+                <div className="d-flex align-items-center justify-content-between mb-2">
+                  <div  className='d-flex align-items-center justify-content-center' >
+                    <span key={item.selectedSize} className="me-2 badge bg-secondary">{item.selectedSize}</span>
+                    <div className="d-inline-block me-2">
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          width: '12px',
+                          height: '12px',
+                          borderRadius: '50%',
+                          backgroundColor: item.selectedColor,
+                          border: '1px solid black'
+                        }}
+                      ></span>
+                    </div>
+                  </div>
+                  <Button variant="link" onClick={() => remove(item)} className="text-danger">
+                  <i className="fa fa-trash fs-6" aria-hidden="true"></i>
+                </Button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        <div className="d-flex justify-content-between mt-3">
+          <span className="fw-bold">Total:</span>
+          <span>{formatCurrencyBRL(getData.reduce((total, item) => total + parseFloat(item.price), 0))}</span>
+        </div>
+      </Popover.Body>
     </Popover>
   );
 
@@ -61,8 +78,6 @@ export const Header = () => {
               <Button variant="outline-dark" className='me-2'><i className='fa fa-shopping-cart me-2'></i>{getData.length}</Button>
             </OverlayTrigger>
             <Button variant="outline-dark" className='me-2'><i className='fa fa-user-plus me-2'></i>Login</Button>
-
-            <Button variant="outline-dark" className='me-2'><i className='fa fa-sign-in me-2'></i>Register</Button>
           </div>
         </Container>
       </Navbar>

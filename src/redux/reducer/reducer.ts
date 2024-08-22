@@ -1,11 +1,7 @@
-interface CartItem {
-  id: number;
-  title: string;
-  // Outras propriedades que seu item do carrinho possa ter
-}
+import { ProductDTO } from "../../dtos/ProductDTO";
 
 interface CartState {
-  carts: CartItem[];
+  carts: ProductDTO[];
 }
 
 interface CartAction {
@@ -24,7 +20,12 @@ export const cartReducer = (state = INIT_STATE, action: CartAction): CartState =
         ...state, carts: [...state.carts, action.payload]
       };
     case "REMOVE_TO_CART":
-      const data = state.carts.filter((item) => item.id !== action.payload);
+      const data = state.carts.filter(
+        (item) => 
+          item.id !== action.payload.id || 
+          item.selectedColor !== action.payload.selectedColor || 
+          item.selectedSize !== action.payload.selectedSize
+      );
       return {
         ...state,
         carts: data

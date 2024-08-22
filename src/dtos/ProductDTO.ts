@@ -9,7 +9,7 @@ interface MediaDTO {
 }
 
 export interface ProductDTO {
-  id: number;
+  id: string;
   title: string;
   price: string;
   description: string;
@@ -17,4 +17,6 @@ export interface ProductDTO {
   colors: ColorDTO[];
   sizes: string[];
   medias: MediaDTO[];
+  selectedSize?: string;
+  selectedColor?: string;
 }

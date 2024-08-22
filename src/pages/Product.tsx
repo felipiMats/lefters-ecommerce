@@ -22,8 +22,13 @@ const Product = () => {
   const products = PRODUCTS;
 
   const onGetProduct = () => {
-    const getProduct = products.find((p) => p.id == id);
-    setProduct(getProduct);
+    try {
+      setLoading(true);
+      const getProduct = products.find((p) => p.id === id);
+      setProduct(getProduct);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const sendCart = () => {
@@ -41,7 +46,7 @@ const Product = () => {
 
   useEffect(() => {
     onGetProduct();
-  },[])
+  },[id])
 
   const ShowProduct = () => {
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar, OverlayTrigger, Popover } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { REMOVE } from '../redux/actions/action';
@@ -10,6 +11,7 @@ import { ProductDTO } from '../dtos/ProductDTO';
 export const Header = () => {
   const getData = useSelector((state: RootState) => state.cartReducer.carts);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const remove = (product: ProductDTO) => {
     dispatch(REMOVE(product));
@@ -61,6 +63,14 @@ export const Header = () => {
           <span className="fw-bold">Total:</span>
           <span>{formatCurrencyBRL(getData.reduce((total, item) => total + parseFloat(item.price), 0))}</span>
         </div>
+        {
+          getData.length > 0 &&
+          <Button variant="primary" className="w-100 mt-3" onClick={() => navigate('/payment')}>
+            Pagar
+          </Button>
+          
+        }
+        
       </Popover.Body>
     </Popover>
   );

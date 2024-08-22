@@ -1,6 +1,5 @@
 export const PRODUCTS = [
   {
-    
     "id": "1",
     "title": "Men’s winter jacket 0",
     "price": "99",

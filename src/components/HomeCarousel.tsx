@@ -3,11 +3,11 @@ import { Carousel } from 'react-bootstrap';
 
 const HomeCarousel: React.FC = () => {
   return (
-    <Carousel style={{height: 350, marginBottom: 16}}>
-      <Carousel.Item style={{height: 350}}>
+    <Carousel style={{height: 490, marginBottom: 16}}>
+      <Carousel.Item style={{height: 500}}>
         <img
           className="d-block w-100"
-          src="https://via.placeholder.com/800x400?text=First+Slide"
+          src="https://via.placeholder.com/1600x600?text=First+Slide"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -16,10 +16,10 @@ const HomeCarousel: React.FC = () => {
         </Carousel.Caption>
       </Carousel.Item>
 
-      <Carousel.Item style={{height: 350}}>
+      <Carousel.Item style={{height: 500}}>
         <img
           className="d-block w-100"
-          src="https://via.placeholder.com/800x400?text=Second+Slide"
+          src="https://via.placeholder.com/1600x600?text=Second+Slide"
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -28,10 +28,10 @@ const HomeCarousel: React.FC = () => {
         </Carousel.Caption>
       </Carousel.Item>
 
-      <Carousel.Item style={{height: 350}}>
+      <Carousel.Item style={{height: 500}}>
         <img
           className="d-block w-100"
-          src="https://via.placeholder.com/800x400?text=Third+Slide"
+          src="https://via.placeholder.com/1600x600?text=Third+Slide"
           alt="Third slide"
         />
         <Carousel.Caption>

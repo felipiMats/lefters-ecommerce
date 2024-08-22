@@ -12,6 +12,9 @@ const ProductCard: React.FC<{ product: ProductDTO }> = ({ product }) => {
       <Card.Img variant="top" style={{maxHeight: 400, objectFit: 'cover'}} src={thumbnailMedia?.url} />
       <Card.Body>
         <Card.Title>{product.title.substring(0, 12)}</Card.Title>
+        <Card.Text className='fw-regular'>
+          {product.description}
+        </Card.Text>
         <Card.Text className='fw-bold'>
           {formatCurrencyBRL(product.price)}
         </Card.Text>

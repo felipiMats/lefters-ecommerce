@@ -18,8 +18,8 @@ export const Header = () => {
   };
 
   const popover = (
-    <Popover id="popover-basic">
-      <Popover.Body  >
+    <Popover style={{backgroundColor: '#FFD580'}} id="popover-basic">
+      <Popover.Body   >
         {getData.map((item, index) => {
           const thumbnailMedia = item?.medias.find((media) => media.thumbnail === true);
 
@@ -77,18 +77,25 @@ export const Header = () => {
 
   return (
     <div>
-      <Navbar bg="light" variant="light" className='shadow-sm bg-white py-4 '>
+      <Navbar bg="dark" variant="dark" className='shadow-sm bg-black py-4 px-5'>
         <Container>
-          <Link style={{ textDecoration: 'none' }} to='/'> <Navbar.Brand className='fw-bold fs-2'>Lefters Tecnologia</Navbar.Brand></Link>
-          <Nav className="me-auto">
-            <Nav.Link className='nav-link nav-link-ltr'><Link style={{ textDecoration: 'none' }} to="/">Home</Link></Nav.Link>
-          </Nav>
+          <div className='d-flex align-items-center justify-content-center'>
+            <Nav.Link>
+              <Link to="/" style={{ textDecoration: 'none', marginRight: 16 }}>
+                <img src={'/leftersLogo.png'} alt="Home" width={24} height={24} />
+              </Link>
+            </Nav.Link>
+            <Link style={{ textDecoration: 'none' }} to='/'> <Navbar.Brand className='fw-bold fs-3'>Lefters Tecnologia</Navbar.Brand></Link>
+          </div>
+          
+          
           <div className="buttons">
             <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-              <Button variant="outline-dark" className='me-2'><i className='fa fa-shopping-cart me-2'></i>{getData.length}</Button>
+              <Button variant="outline-light" className='me-2'><i className='fa fa-shopping-cart me-2'></i>{getData.length}</Button>
             </OverlayTrigger>
-            <Button variant="outline-dark" className='me-2'><i className='fa fa-user-plus me-2'></i>Login</Button>
+            <Button variant="outline-light" className='me-2'><i className='fa fa-user-plus me-2'></i>Login</Button>
           </div>
+
         </Container>
       </Navbar>
   </div>
